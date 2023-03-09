@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Resources/Shaders/InfiniteGrid/infinite_grid.frag</file>
+        <file>Resources/Shaders/InfiniteGrid/infinite_grid.vert</file>
+    </qresource>
+</RCC>
