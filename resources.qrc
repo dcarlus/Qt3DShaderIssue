@@ -2,5 +2,7 @@
     <qresource prefix="/">
         <file>Resources/Shaders/InfiniteGrid/infinite_grid.frag</file>
         <file>Resources/Shaders/InfiniteGrid/infinite_grid.vert</file>
+        <file>Resources/Shaders/SimpleShader/simple.frag</file>
+        <file>Resources/Shaders/SimpleShader/simple.vert</file>
     </qresource>
 </RCC>

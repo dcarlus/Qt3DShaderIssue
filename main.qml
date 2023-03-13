@@ -68,6 +68,58 @@ Window {
                 intermediateGridColor: "#353535"
                 biggestGridColor: "#373737"
             }
+
+            Entity {
+                id: test
+                components: [mesh, debugMaterial]
+
+                CuboidMesh {
+                    id: mesh
+                }
+
+                Material {
+                    id: debugMaterial
+
+                    effect: Effect {
+                        // OpenGL 4.5
+                        property string vertexGL4: "qrc:/Resources/Shaders/SimpleShader/simple.vert"
+                        property string fragmentGL4: "qrc:/Resources/Shaders/SimpleShader/simple.frag"
+
+                        FilterKey {
+                            id: forward
+                            name: "renderingStyle"
+                            value: "forward"
+                        }
+
+                        ShaderProgram {
+                            id: gl4Shader
+                            vertexShaderCode: loadSource(parent.vertexGL4)
+                            fragmentShaderCode: loadSource(parent.fragmentGL4)
+                        }
+
+                        techniques: [
+                            // OpenGL 4.6
+                            Technique {
+                                filterKeys: [forward]
+                                graphicsApiFilter {
+                                    api: GraphicsApiFilter.OpenGL
+                                    profile: GraphicsApiFilter.CoreProfile
+                                    majorVersion: 4
+                                    minorVersion: 6
+                                }
+
+                                renderPasses: RenderPass {
+                                    shaderProgram: gl4Shader
+                                    filterKeys: FilterKey {
+                                        name: "renderingStyle"
+                                        value: true
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                }
+            }
         }
     }
 }
